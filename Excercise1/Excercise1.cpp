@@ -3,7 +3,7 @@
 
 class Figure
 {
-private:
+protected:
 	int sides;
 	std::string name;
 
@@ -16,27 +16,33 @@ public:
 	{
 		return name;
 	}
-	Figure(int s, std::string n) : sides(s), name(n) {}
+	Figure() : sides(0), name("Фигура") {}
 };
 
 class Triangle : public Figure
 {
 public:
-	Triangle(int s, std::string n) : Figure(s, n) {}
+	Triangle() {
+		sides = 3;
+		name = "Треугольник";
+	}
 };
 
 class Rectangle : public Figure
 {
 public:
-	Rectangle(int s, std::string n) : Figure(s, n) {}
+	Rectangle() {
+		sides = 4;
+		name = "Четырёхугольник";
+	}
 };
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	Figure F1(0, "Фигура");
-	Triangle T1(3, "Треугольник");
-	Rectangle R1(4, "Четырёхугольник");
+	Figure F1;
+	Triangle T1;
+	Rectangle R1;
 
 	std::cout << "Количество сторон: " << std::endl;
 	std::cout << F1.get_name() << ": " << F1.get_sides() << std::endl;
